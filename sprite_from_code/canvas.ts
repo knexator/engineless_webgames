@@ -26,7 +26,9 @@ function canvasFromAscii(colors: string[], ascii: string): HTMLCanvasElement {
     let ascii_lines = ascii.trim().split("\n").map(x => x.trim());
     let spr_h = ascii_lines.length;
     let spr_w = ascii_lines[0].length;
-    if (ascii_lines.some(line => line.length !== spr_w)) throw new Error(`The given ascii is not a proper rectangle: ${ascii}`);
+    if (ascii_lines.some(line => line.length !== spr_w)) {
+        throw new Error(`The given ascii is not a proper rectangle: ${ascii}`);
+    }
     
     let sprite_canvas = document.createElement("canvas");
     let sprite_ctx = sprite_canvas.getContext("2d")!;
