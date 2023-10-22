@@ -4,6 +4,7 @@ export const enum MouseButton {
     Middle = 4,
 };
 
+// Taken from https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values
 export const enum KeyCode {
     Escape = "Escape",
     Digit1 = "Digit1",
