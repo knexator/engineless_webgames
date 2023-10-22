@@ -1,29 +1,8 @@
-export class RawMouse {
-    public clientX: number = 0;
-    public clientY: number = 0;
-    public buttons: number = 0;
-    public wheel: number = 0;
-
-    constructor() {
-        document.addEventListener("pointermove", this.onPointerEvent.bind(this));
-        document.addEventListener("pointerup", this.onPointerEvent.bind(this));
-        document.addEventListener("pointerdown", this.onPointerEvent.bind(this));
-        document.addEventListener("wheel", this.onWheelEvent.bind(this));
-    }
-
-    private onPointerEvent(ev: MouseEvent) {
-        this.buttons = ev.buttons;
-        this.clientX = ev.clientX;
-        this.clientY = ev.clientY;
-    }
-
-    private onWheelEvent(ev: WheelEvent) {
-        this.wheel = ev.deltaY;
-    }
-}
-
-// Another option:
-// export type KeyCode = "Escape" | "Digit1" | "Digit2" | "Digit3" | "Digit4" | "Digit5" | "Digit6" | "Digit7" | "Digit8" | "Digit9" | "Digit0" | "Minus" | "Equal" | "Backspace" | "Tab" | "KeyQ" | "KeyW" | "KeyE" | "KeyR" | "KeyT" | "KeyY" | "KeyU" | "KeyI" | "KeyO" | "KeyP" | "BracketLeft" | "BracketRight" | "Enter" | "ControlLeft" | "KeyA" | "KeyS" | "KeyD" | "KeyF" | "KeyG" | "KeyH" | "KeyJ" | "KeyK" | "KeyL" | "Semicolon" | "Quote" | "Backquote" | "ShiftLeft" | "Backslash" | "KeyZ" | "KeyX" | "KeyC" | "KeyV" | "KeyB" | "KeyN" | "KeyM" | "Comma" | "Period" | "Slash" | "ShiftRight" | "NumpadMultiply" | "AltLeft" | "Space" | "CapsLock" | "F1" | "F2" | "F3" | "F4" | "F5" | "F6" | "F7" | "F8" | "F9" | "F10" | "Pause" | "ScrollLock" | "Numpad7" | "Numpad8" | "Numpad9" | "NumpadSubtract" | "Numpad4" | "Numpad5" | "Numpad6" | "NumpadAdd" | "Numpad1" | "Numpad2" | "Numpad3" | "Numpad0" | "NumpadDecimal" | "PrintScreen" | "IntlBackslash" | "F11" | "F12" | "NumpadEqual" | "F13" | "F14" | "F15" | "F16" | "F17" | "F18" | "F19" | "F20" | "F21" | "F22" | "F23" | "KanaMode" | "Lang2" | "Lang1" | "IntlRo" | "F24" | "Convert" | "NonConvert" | "IntlYen" | "NumpadComma" | "" | "" | "MediaTrackPrevious" | "" | "MediaTrackNext" | "NumpadEnter" | "ControlRight" | "AudioVolumeMute" | "LaunchApp2" | "MediaPlayPause" | "MediaStop" | "VolumeDown" | "VolumeUp" | "BrowserHome" | "NumpadDivide" | "PrintScreen" | "AltRight" | "NumLock" | "Pause" | "Home" | "ArrowUp" | "PageUp" | "ArrowLeft" | "ArrowRight" | "End" | "ArrowDown" | "PageDown" | "Insert" | "Delete" | "MetaLeft" | "MetaRight" | "ContextMenu" | "Power" | "BrowserSearch" | "BrowserFavorites" | "BrowserRefresh" | "BrowserStop" | "BrowserForward" | "BrowserBack" | "LaunchApp1" | "LaunchMail" | "MediaSelect" | "Lang2";
+export const enum MouseButton {
+    Left = 1,
+    Right = 2,
+    Middle = 4,
+};
 
 export const enum KeyCode {
     Escape = "Escape",
@@ -171,9 +150,38 @@ export const enum KeyCode {
     LaunchApp1 = "LaunchApp1", 
     LaunchMail = "LaunchMail", 
     MediaSelect = "MediaSelect", 
+};
+
+// Another option:
+// export type KeyCode = "Escape" | "Digit1" | "Digit2" | "Digit3" | "Digit4" | "Digit5" | "Digit6" | "Digit7" | "Digit8" | "Digit9" | "Digit0" | "Minus" | "Equal" | "Backspace" | "Tab" | "KeyQ" | "KeyW" | "KeyE" | "KeyR" | "KeyT" | "KeyY" | "KeyU" | "KeyI" | "KeyO" | "KeyP" | "BracketLeft" | "BracketRight" | "Enter" | "ControlLeft" | "KeyA" | "KeyS" | "KeyD" | "KeyF" | "KeyG" | "KeyH" | "KeyJ" | "KeyK" | "KeyL" | "Semicolon" | "Quote" | "Backquote" | "ShiftLeft" | "Backslash" | "KeyZ" | "KeyX" | "KeyC" | "KeyV" | "KeyB" | "KeyN" | "KeyM" | "Comma" | "Period" | "Slash" | "ShiftRight" | "NumpadMultiply" | "AltLeft" | "Space" | "CapsLock" | "F1" | "F2" | "F3" | "F4" | "F5" | "F6" | "F7" | "F8" | "F9" | "F10" | "Pause" | "ScrollLock" | "Numpad7" | "Numpad8" | "Numpad9" | "NumpadSubtract" | "Numpad4" | "Numpad5" | "Numpad6" | "NumpadAdd" | "Numpad1" | "Numpad2" | "Numpad3" | "Numpad0" | "NumpadDecimal" | "PrintScreen" | "IntlBackslash" | "F11" | "F12" | "NumpadEqual" | "F13" | "F14" | "F15" | "F16" | "F17" | "F18" | "F19" | "F20" | "F21" | "F22" | "F23" | "KanaMode" | "Lang2" | "Lang1" | "IntlRo" | "F24" | "Convert" | "NonConvert" | "IntlYen" | "NumpadComma" | "" | "" | "MediaTrackPrevious" | "" | "MediaTrackNext" | "NumpadEnter" | "ControlRight" | "AudioVolumeMute" | "LaunchApp2" | "MediaPlayPause" | "MediaStop" | "VolumeDown" | "VolumeUp" | "BrowserHome" | "NumpadDivide" | "PrintScreen" | "AltRight" | "NumLock" | "Pause" | "Home" | "ArrowUp" | "PageUp" | "ArrowLeft" | "ArrowRight" | "End" | "ArrowDown" | "PageDown" | "Insert" | "Delete" | "MetaLeft" | "MetaRight" | "ContextMenu" | "Power" | "BrowserSearch" | "BrowserFavorites" | "BrowserRefresh" | "BrowserStop" | "BrowserForward" | "BrowserBack" | "LaunchApp1" | "LaunchMail" | "MediaSelect" | "Lang2";
+
+// Tracks the state of the mouse
+export class MouseListener {
+    public clientX: number = 0;
+    public clientY: number = 0;
+    public buttons: number = 0;
+    public wheel: number = 0;
+
+    constructor() {
+        document.addEventListener("pointermove", this.onPointerEvent.bind(this));
+        document.addEventListener("pointerup", this.onPointerEvent.bind(this));
+        document.addEventListener("pointerdown", this.onPointerEvent.bind(this));
+        document.addEventListener("wheel", this.onWheelEvent.bind(this));
+    }
+
+    private onPointerEvent(ev: MouseEvent) {
+        this.buttons = ev.buttons;
+        this.clientX = ev.clientX;
+        this.clientY = ev.clientY;
+    }
+
+    private onWheelEvent(ev: WheelEvent) {
+        this.wheel = ev.deltaY;
+    }
 }
 
-export class RawKeyboard {
+// Tracks the state of the keyboard
+export class KeyboardListener {
     public pressed: Set<KeyCode> = new Set();
 
     constructor() {
@@ -190,12 +198,7 @@ export class RawKeyboard {
     }
 }
 
-export const enum MouseButton {
-    Left = 1,
-    Right = 2,
-    Middle = 4,
-};
-
+// Presents the mouse state
 export class Mouse {
     public clientX: number = 0;
     public clientY: number = 0;
@@ -206,7 +209,7 @@ export class Mouse {
     public prev_buttons: number = 0;
 
     constructor(
-        private readonly mouse_listener: RawMouse = new RawMouse(),
+        private readonly mouse_listener: MouseListener = new MouseListener(),
     ) {}
 
     isDown(button: MouseButton): Boolean {
@@ -232,12 +235,13 @@ export class Mouse {
     }        
 }
 
+// Presents the keyboard state
 export class Keyboard {
     public pressed: Set<KeyCode> = new Set();
     public prev_pressed: Set<KeyCode> = new Set();
 
     constructor(
-        private readonly keyboard_listener: RawKeyboard = new RawKeyboard(),
+        private readonly keyboard_listener: KeyboardListener = new KeyboardListener(),
     ) {}
 
     isDown(code: KeyCode): Boolean {
@@ -258,6 +262,7 @@ export class Keyboard {
     }
 }
 
+// Presents mouse & keyboard states
 export class Input {
     constructor(
         public readonly mouse: Mouse = new Mouse(),
