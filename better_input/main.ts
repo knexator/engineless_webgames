@@ -7,6 +7,8 @@ function every_frame(cur_timestamp: number) {
   let delta_time = (cur_timestamp - last_timestamp) / 1000;
   last_timestamp = cur_timestamp;
 
+  input.startFrame();
+
   // update
   if (input.keyboard.isDown(KeyCode.KeyW) || input.keyboard.isDown(KeyCode.ArrowUp)) {
     // ...
