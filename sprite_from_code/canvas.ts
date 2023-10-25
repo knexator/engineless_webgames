@@ -31,6 +31,8 @@ function canvasFromAscii(colors: string[], ascii: string): HTMLCanvasElement {
     }
     
     let sprite_canvas = document.createElement("canvas");
+    sprite_canvas.width = spr_w;
+    sprite_canvas.height = spr_h;
     let sprite_ctx = sprite_canvas.getContext("2d")!;
 
     for (let j=0; j<spr_h; j++) {
